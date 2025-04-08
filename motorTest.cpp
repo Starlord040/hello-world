@@ -1,8 +1,8 @@
-#define MOTOR_IN1 23 // GPIO Pin for L298N IN1
-#define MOTOR_IN2 24 // GPIO Pin for L298N IN2
-#define MOTOR_ENA 18 // GPIO Pin forL298N enable (PWM Speed Control)
+#define MOTOR_IN1 11 // GPIO Pin for L298N IN1, physical pin 23
+#define MOTOR_IN2 8 // GPIO Pin for L298N IN2, physical pin 24
+#define MOTOR_ENA 18 // GPIO Pin forL298N enable (PWM Speed Control), currently connected to ground
 
-#include "WiringPi/wirningPi.h"
+#include "wirningPi.h"
 #include <unistd.h>
 #include <stdio.h>
 
@@ -29,13 +29,13 @@ void initDC() {
     wiringPiSetupPinType(WPI_PIN_BCM);
     
     // Setup DC Motor Driver Pins
-    pinMode(23, OUTPUT);
-    pinMode(24, OUTPUT);
+    pinMode(MOTOR_IN1, OUTPUT);
+    pinMode(MOTOR_IN2, OUTPUT);
     // Frequency and pulse break ratio can be configured
     // pinMode(MOTOR_ENA, PWM_MS_OUTPUT);
 
-    digitalWrite(23, LOW);
-    digitalWrite(24, LOW);
+    digitalWrite(MOTOR_IN1, LOW);
+    digitalWrite(MOTOR_IN2, LOW);
     // pwmWrite(MOTOR_ENA, ###);
 
     
